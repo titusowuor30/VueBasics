@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue hello world</title>
+</head>
+<body>
+    <div id="app">
+        <h1>{{msg}}</h1>
+    </div>
+    <div id="app-1">
+        <h1>{{message}}</h1>
+    </div>
+    <div id="app-2">
+        <span v-bind:title="message">
+            hover mouse to see bound title
+        </span>
+    </div>
+    <div id="app-3">
+        <span v-if="seen">
+            You see me now!!
+        </span>
+    </div>
+    <div id="app-4">
+      <ol>
+          <li v-for="todo in todos">{{todo.text}}</li>
+      </ol>
+    </div>
+    <div id="app-5">
+    <p>{{message}}</p>
+    <button v-on:click="rm">Reverse Message</button>
+    </div>
+    <div id="app-6">
+        <p>{{ message }}</p>
+        <input v-model="message">
+      </div>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    </script>
+    <script>
+      var app=new Vue({
+        el: "#app",
+        data: {
+            msg: "Hello vue!"
+        }
+      })
+     new Vue({
+         el:'#app-1',
+         data:{
+             message:"This is my second vue!"
+         }
+     })
+     new Vue({
+         el:'#app-2',
+         data:{
+             message:'You loaded this page on '+new Date().toLocaleString()
+         }
+     })
+     new Vue({
+         el:'#app-3',
+         data:{
+             seen:false
+         }
+     })
+     new Vue({
+         el:'#app-4',
+         data:{
+             todos:[
+                 {text:'learn vue!'},
+                 {text:'do javascript!'}
+             ]
+         }
+     })
+     new Vue({
+         el:'#app-5',
+         data:{
+             message:'This is the original message'
+         },
+         methods:{
+             rm:function(){
+                 this.message=this.message.split('').reverse().join('')
+             }
+         }
+     })
+     new Vue({
+  el: '#app-6',
+  data: {
+    message: 'Hello Vue!'
+  }
+})
+    </script>
+    </body>
+</html>
